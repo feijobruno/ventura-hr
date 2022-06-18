@@ -6,7 +6,7 @@ import { Navbar } from '../../../components/Navbar';
 import { Sidebar } from '../../../components/Sidebar';
 
 import api from '../../../config/configApi';
-import { servDeleteUser } from '../../../services/servDeleteUser';
+// import { servDeleteUser } from '../../../services/servDeleteUser';
 
 export const EditUserPassword = (props) => {
 
@@ -32,7 +32,7 @@ export const EditUserPassword = (props) => {
             }
         }
 
-        await api.put("/user/user-senha", { id, password }, headers)
+        await api.put("/users/user-password", { id, password }, headers)
             .then((response) => {
                 setStatus({
                     type: 'redSuccess',
@@ -63,7 +63,7 @@ export const EditUserPassword = (props) => {
                 }
             }
 
-            await api.get("/user/user/" + id, headers)
+            await api.get("/users/id/" + id, headers)
                 .then((response) => {
                     if (response.data.user) {
                         //setName(response.data.user.name);
@@ -109,27 +109,27 @@ export const EditUserPassword = (props) => {
         }
     }
 
-    const deleteUser = async (idUser) => {
-        const response = await servDeleteUser(idUser);
-        if (response) {
-            if (response.type === "success") {
-                setStatus({
-                    type: 'redSuccess',
-                    mensagem: response.mensagem
-                });
-            } else {
-                setStatus({
-                    type: "error",
-                    mensagem: response.mensagem
-                });
-            }
-        } else {
-            setStatus({
-                type: 'error',
-                mensagem: 'Erro: Tente mais tarde!'
-            });
-        }
-    }
+    // const deleteUser = async (idUser) => {
+    //     const response = await servDeleteUser(idUser);
+    //     if (response) {
+    //         if (response.type === "success") {
+    //             setStatus({
+    //                 type: 'redSuccess',
+    //                 mensagem: response.mensagem
+    //             });
+    //         } else {
+    //             setStatus({
+    //                 type: "error",
+    //                 mensagem: response.mensagem
+    //             });
+    //         }
+    //     } else {
+    //         setStatus({
+    //             type: 'error',
+    //             mensagem: 'Erro: Tente mais tarde!'
+    //         });
+    //     }
+    // }
 
     return (
         <div>
@@ -148,9 +148,9 @@ export const EditUserPassword = (props) => {
                                 <Link to={"/view-user/" + id}>
                                     <button type="button" className="btn-primary">Visualizar</button>
                                 </Link>{" "}
-                                <Link to="#">
+                                {/* <Link to="#">
                                     <button type="button" className="btn-danger" onClick={() => deleteUser(id)}>Apagar</button>
-                                </Link>
+                                </Link> */}
                             </div>
                         </div>
 

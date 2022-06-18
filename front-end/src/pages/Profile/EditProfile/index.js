@@ -28,7 +28,7 @@ export const EditProfile = () => {
             }
         }
 
-        await api.put("/profile/edit-profile", { name, email }, headers)
+        await api.put("/profile", { name, email }, headers)
             .then((response) => {
                 localStorage.setItem('name', name);
                 setStatus({
@@ -60,7 +60,7 @@ export const EditProfile = () => {
                 }
             }
 
-            await api.get("/profile/view-profile", headers)
+            await api.get("/profile", headers)
                 .then((response) => {
                     if (response.data.user) {
                         setName(response.data.user.name);

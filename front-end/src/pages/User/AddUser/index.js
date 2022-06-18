@@ -33,7 +33,7 @@ export const AddUser = () => {
             }
         };
 
-        await api.post('/user/user', user, headers)
+        await api.post('/users/', user, headers)
             .then((response) => {
                 setStatus({
                     type: 'success',
@@ -87,11 +87,8 @@ export const AddUser = () => {
             <Navbar />
             <div className="content">
                 <Sidebar active="users" />
-
-
                 <div className="wrapper">
                     <div className="row">
-
                         <div className="top-content-adm">
                             <span className="title-content">Cadastrar Usuário</span>
                             <div className="top-content-adm-right">
@@ -100,10 +97,8 @@ export const AddUser = () => {
                                 </Link>
                             </div>
                         </div>
-
                         <div className="alert-content-adm">
                             {status.type === 'error' ? <p className="alert-danger">{status.mensagem}</p> : ""}
-
                             {status.type === 'success' ?
                                 <Redirect to={{
                                     pathname: '/users',
@@ -123,36 +118,36 @@ export const AddUser = () => {
                                         <label className="title-input">Nome</label>
                                         <input type="text" name="name" id="name" className="input-adm" placeholder="Nome completo" onChange={valueInput} />
                                     </div>
-                                    
-                                <div className="column">
-                                    <label className="title-input">Endereco</label>
-                                    <input type="text" name="address" id="address" className="input-adm" placeholder="Endereço" onChange={valueInput} />
-                                </div>
-                                <div className="column">
-                                    <label className="title-input">Telefone</label>
-                                    <input type="text" name="phone" id="phone" className="input-adm" placeholder="Telefone" onChange={valueInput} />
-                                </div>
+
+                                    <div className="column">
+                                        <label className="title-input">Endereco</label>
+                                        <input type="text" name="address" id="address" className="input-adm" placeholder="Endereço" onChange={valueInput} />
+                                    </div>
+                                    <div className="column">
+                                        <label className="title-input">Telefone</label>
+                                        <input type="text" name="phone" id="phone" className="input-adm" placeholder="Telefone" onChange={valueInput} />
+                                    </div>
                                 </div>
                                 <div className="row-input">
-                                <div className="column">
+                                    <div className="column">
                                         <label className="title-input">E-mail</label>
                                         <input type="email" name="email" id="email" className="input-adm" placeholder="Melhor e-mail" onChange={valueInput} />
-                                </div>
-                                <div className="column">
-                                    <label className="title-input">Senha</label>
-                                    <input type="password" name="password" id="password" className="input-adm" placeholder="Senha para acessar o sistema" autoComplete="on" onChange={valueInput} />
-                                </div>
-                                <div className="column">
-                                    <label className="title-input">Tipo de Conta</label><br/>
-                                    <select name="account_type" className="input-select">
-                                        <option value="1" selected>Candidato</option>
-                                        <option value="2">Empresa</option>
-                                </select>
-                                 </div>
-                                <div className="column">
-                                    <label className="title-input">CPF</label>
-                                    <input type="text" name="cpf" id="cpf" className="input-adm" placeholder="CPF" autoComplete="on" onChange={valueInput} />
-                                </div>
+                                    </div>
+                                    <div className="column">
+                                        <label className="title-input">Senha</label>
+                                        <input type="password" name="password" id="password" className="input-adm" placeholder="Senha para acessar o sistema" autoComplete="on" onChange={valueInput} />
+                                    </div>
+                                    <div className="column">
+                                        <label className="title-input">Tipo de Conta</label><br />
+                                        <select name="account_type" className="input-select">
+                                            <option value="1" selected>Candidato</option>
+                                            <option value="2">Empresa</option>
+                                        </select>
+                                    </div>
+                                    <div className="column">
+                                        <label className="title-input">CPF</label>
+                                        <input type="text" name="cpf" id="cpf" className="input-adm" placeholder="CPF" autoComplete="on" onChange={valueInput} />
+                                    </div>
 
                                 </div>
                                 <div className="row-input">
@@ -164,14 +159,14 @@ export const AddUser = () => {
                                         <label className="title-input">CNPJ</label>
                                         <input type="text" name="cnpj" id="cnpj" className="input-adm" placeholder="CNPJ" autoComplete="on" onChange={valueInput} />
                                     </div>
+                                    <div className="column">
+                                        <label className="title-input">Código Empresa</label>
+                                        <input type="text" name="owner_id" id="owner_id" className="input-adm" placeholder="Código Empresa" autoComplete="on" onChange={valueInput} />
+                                    </div>
                                 </div>
-
                                 <button type="submit" className="btn-success">Cadastrar</button>
-
-
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>

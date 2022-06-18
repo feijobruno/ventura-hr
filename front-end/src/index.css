@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
 }
 
 :root {
@@ -60,7 +61,6 @@ body {
 }
 
 .wrapper-login {
- 
     width: 100%;
     background: var(--second-color);
     border-radius: 5px;
@@ -578,7 +578,7 @@ body {
 /* Paginacao */
 
 .content-pagination {
-    margin: 15px 0;
+    margin: 3px 0;
     width: 100%;
     display: flex;
     align-items: center;
@@ -587,13 +587,13 @@ body {
 
 .pagination {
     display: inline-block;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .pagination a {
     color: var(--fourth-bg-color);
     float: left;
-    padding: 8px 10px;
+    padding: 5px 8px;
     text-decoration: none;
     transition: background-color .3s;
 }
@@ -694,11 +694,11 @@ body {
 .dropdown-btn-action {
     background-color: var(--primary-color);
     color: var(--fourth-color);
-    padding: 5px 8px;
+    padding: 3px 6px;
     border: 1px solid var(--primary-color);
     border-radius: 4px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     transition: all .3s ease;
 }
 

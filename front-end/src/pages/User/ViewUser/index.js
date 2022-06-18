@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect, useLocation } from 'react-router-dom';
-
 import { Navbar } from '../../../components/Navbar';
 import { Sidebar } from '../../../components/Sidebar';
-
-import { servDeleteUser } from '../../../services/servDeleteUser';
 import api from '../../../config/configApi';
 
 export const ViewUser = (props) => {
@@ -29,8 +26,7 @@ export const ViewUser = (props) => {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }
             }
-
-            await api.get("/user/user/" + id, headers)
+            await api.get("/users/id/" + id, headers)
                 .then((response) => {
                     if (response.data.user) {
                         setEndImg(response.data.endImage);
@@ -60,38 +56,13 @@ export const ViewUser = (props) => {
         getUser();
     }, [id]);
 
-    // const deleteUser = async (idUser) => {
-    //     const response = await servDeleteUser(idUser);
-
-    //     if (response) {
-    //         if (response.type === "success") {
-    //             setStatus({
-    //                 type: "redSuccess",
-    //                 mensagem: response.mensagem
-    //             });
-    //         } else {
-    //             setStatus({
-    //                 type: response.type,
-    //                 mensagem: response.mensagem
-    //             });
-    //         }
-    //     } else {
-    //         setStatus({
-    //             type: "redError",
-    //             mensagem: "Erro: Tente mais tarde!"
-    //         });
-    //     }
-    // }
-
     return (
         <div>
             <Navbar />
             <div className="content">
                 <Sidebar active="users" />
-
                 <div className="wrapper">
                     <div className="row">
-
                         <div className="top-content-adm">
                             <span className="title-content">Visualizar Usuário</span>
                             <div className="top-content-adm-right">
@@ -160,8 +131,6 @@ export const ViewUser = (props) => {
                                 <span className="view-adm-info">{data.email}</span>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

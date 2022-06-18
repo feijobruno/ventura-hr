@@ -30,7 +30,7 @@ export const EditUser = (props) => {
             }
         }
 
-        await api.put("/user/user", { id, name, email }, headers)
+        await api.put("/users/", { id, name, email }, headers)
             .then((response) => {
                 setStatus({
                     type: 'redSuccess',
@@ -61,7 +61,7 @@ export const EditUser = (props) => {
                 }
             }
 
-            await api.get("/user/user/" + id, headers)
+            await api.get("/users/id/" + id, headers)
                 .then((response) => {
                     if (response.data.user) {
                         setName(response.data.user.name);
@@ -136,7 +136,6 @@ export const EditUser = (props) => {
             <Navbar />
             <div className="content">
                 <Sidebar active="users" />
-
                 <div className="wrapper">
                     <div className="row">
                         <div className="top-content-adm">
@@ -153,7 +152,6 @@ export const EditUser = (props) => {
                                 </Link> */}
                             </div>
                         </div>
-
                         <div className="alert-content-adm">
                             {status.type === 'redWarning' ?
                                 <Redirect to={{
@@ -189,17 +187,12 @@ export const EditUser = (props) => {
                                         <label className="title-input">E-mail</label>
                                         <input type="email" name="email" id="email" className="input-adm" placeholder="Melhor e-mail do usuário" value={email} onChange={text => setEmail(text.target.value)} />
                                     </div>
-
                                 </div>
-
                                 <button type="submit" className="btn-warning">Salvar</button>
-
                             </form>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     )

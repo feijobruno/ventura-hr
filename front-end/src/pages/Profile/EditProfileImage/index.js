@@ -29,7 +29,7 @@ export const EditProfileImage = () => {
             }
         }
 
-        await api.put("/profile/edit-profile-image", formData, headers)
+        await api.put("/profile/edit-image", formData, headers)
             .then((response) => {
                 localStorage.setItem('image', response.data.image);
                 setStatus({
@@ -60,7 +60,7 @@ export const EditProfileImage = () => {
                 }
             }
 
-            await api.get("/profile/view-profile", headers)
+            await api.get("/profile", headers)
                 .then((response) => {
                     if (response.data.user) {
                         setEndImg(response.data.endImage);

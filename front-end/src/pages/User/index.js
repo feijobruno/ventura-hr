@@ -37,7 +37,7 @@ export const Users = () => {
             }
         }
 
-        await api.get("/user/users/" + page, headers)
+        await api.get("/users/page/" + page, headers)
             .then((response) => {
                 setData(response.data.users);
                 setLastPage(response.data.lastPage);
@@ -102,6 +102,7 @@ export const Users = () => {
                                     <th scope="col">ID</th>
                                     <th scope="col">Nome</th>
                                     <th scope="col">E-mail</th>
+                                    <th scope="col">Perfil</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
@@ -109,10 +110,11 @@ export const Users = () => {
                             <tbody>
                                 {data.map(user => (
                                     <tr key={user.id}>
-                                        <td scope="row">{user.id}</td>
-                                        <td scope="row">{user.name}</td>
-                                        <td scope="row">{user.email}</td>
-                                        <td scope="row">
+                                        <td>{user.id}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.account_type}</td>
+                                        <td>
                                             <div className="dropdown-action">
                                                 <button onClick={() => { closeDropdownAction(); actionDropdown(user.id) }} className="dropdown-btn-action">Ações</button>
                                                 <div id={"actionDropdown" + user.id} className="dropdown-action-item">
@@ -130,15 +132,10 @@ export const Users = () => {
                         <div className="content-pagination">
                             <div className="pagination">
                                 <Link to="#" onClick={() => getUsers(1)}><i className="fas fa-angle-double-left"></i></Link>
-
                                 {page !== 1 ? <Link to="#" onClick={() => getUsers(page - 1)}>{page - 1}</Link> : ""}
-
                                 <Link to="#" className="active">{page}</Link>
-
                                 {page + 1 <= lastPage ? <Link to="#" onClick={() => getUsers(page + 1)}>{page + 1}</Link> : ""}
-
                                 <Link to="#" onClick={() => getUsers(lastPage)}><i className="fas fa-angle-double-right"></i></Link>
-
                             </div>
                         </div>
 

@@ -1,9 +1,6 @@
 import React, { useState, useContext } from 'react';
-
 import { Link, useHistory, useLocation } from 'react-router-dom';
-
 import api from '../../config/configApi';
-
 import { Context } from '../../Context/AuthContext';
 
 export const Login = () => {
@@ -38,7 +35,7 @@ export const Login = () => {
             'Content-Type': 'application/json'
         }
 
-        await api.post("/login/login", user, { headers })
+        await api.post("/login", user, { headers })
             .then((response) => {
                 console.log(response);
                 setStatus({
@@ -47,10 +44,14 @@ export const Login = () => {
                     loading: false
                 });
                 localStorage.setItem('token', response.data.token);
+                localStorage.setItem('id_user', response.data.user.id);
                 localStorage.setItem('name', response.data.user.name);
+                localStorage.setItem('account_type', response.data.user.account_type);
                 localStorage.setItem('image', response.data.user.image);
-                signIn(true);
-                return history.push('/dashboard');
+                localStorage.setItem('owner_id', response.data.user.owner_id);
+                signIn(response.data.user.account_type);
+                return history.push('/' + 'dashboard-' + response.data.user.account_type);
+                //return history.push('/candidate-dashboard');
             }).catch((err) => {
                 if (err.response) {
                     //console.log(err.response);
@@ -82,7 +83,6 @@ export const Login = () => {
 
                         {status.type === 'error' ? <p className="alert-danger">{status.mensagem}</p> : ""}
                         {status.type === 'success' ? <p className="alert-success">{status.mensagem}</p> : ""}
-
                         {status.loading ? <p className="alert-success">Validando...</p> : ""}
 
                         <div className="row">
@@ -103,9 +103,7 @@ export const Login = () => {
                             <Link to="/add-user-login" className="link-pg-login">Cadastrar</Link>{" - "}
                             <Link to="/recover-password" className="link-pg-login">Esqueceu a Senha</Link>
                         </div>
-
                     </form>
-
                 </div>
             </div>
         </div>

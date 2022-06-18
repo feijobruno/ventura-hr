@@ -6,13 +6,6 @@ export const Navbar = () => {
 
     const [image] = useState(localStorage.getItem('image'));
     const [name] = useState(localStorage.getItem('name'));
-
-    const { handleLogout } = useContext(Context);
-
-    const dropdownUserNavbar = async () => {
-        document.getElementById("dropNavbarUser").classList.toggle("dropdown-menu-action");
-    }
-
     const barsSidebar = async () => {
         document.getElementById("barsSidebar").classList.toggle("sidebar-active");
     }
@@ -27,11 +20,12 @@ export const Navbar = () => {
             </div>
             <div className="navbar-content">
                 <small>{name}</small>
-                <div className="avatar">
-                    <span onClick={() => dropdownUserNavbar()} className="drop-nav-bar-user">
+                <div className="avatar ml-3">
+                    {/* <span onClick={() => dropdownUserNavbar()} className="drop-nav-bar-user"> */}
+                    <span className="drop-nav-bar-user">
                         <img src={image} alt={name} />
                     </span>
-                    <div id="dropNavbarUser" className="dropdown-menu setting">
+                    {/* <div id="dropNavbarUser" className="dropdown-menu setting">
                         <div className="item">
                             <Link to="/view-profile">
                                 <span className="fas fa-user"></span> Perfil
@@ -40,7 +34,7 @@ export const Navbar = () => {
                         <div className="item" onClick={handleLogout}>
                             <span className="fas fa-sign-out-alt"></span> Sair
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav>

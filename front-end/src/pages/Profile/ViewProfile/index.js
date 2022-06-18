@@ -28,7 +28,7 @@ export const ViewProfile = () => {
                 }
             }
 
-            await api.get("/profile/view-profile", headers)
+            await api.get("/profile", headers)
                 .then((response) => {
                     if (response.data.user) {
                         setEndImg(response.data.endImage);
@@ -77,15 +77,21 @@ export const ViewProfile = () => {
                         </div>
 
                         <div className="alert-content-adm">
-                            {status.type === 'redError' ?
-                                <Redirect to={{
-                                    pathname: '/login',
-                                    state: {
-                                        type: "error",
-                                        mensagem: status.mensagem
-                                    }
-                                }} /> : ""}
-                            {status.type === 'success' ? <p className="alert-success">{status.mensagem}</p> : ""}
+                            {status.type === 'success' ?
+                                <div className="alert alert-success alert-dismissible fade show" role="alert">
+                                    {status.mensagem}
+                                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div> : ""}
+
+                            {status.type === 'error' ?
+                                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {status.mensagem}
+                                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div> : ""}
                         </div>
 
                         

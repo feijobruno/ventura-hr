@@ -85,18 +85,27 @@ export const AddUserLogin = () => {
             <div className="container-login-add-user">
                 <div className="wrapper-login">
                     <div className="title">
-                        <span>Cadastrar Usuário</span>
+                        <span>Cadastrar Candidato</span>
                     </div>
+                    <div className="alert-content-adm">
+                        {status.type === 'redSuccess' ?
+                            <Redirect to={{
+                                pathname: '/',
+                                state: {
+                                    type: "success",
+                                    mensagem: status.mensagem
+                                }
+                            }} />
+                            : ""}
 
-                    {status.type === 'redSuccess' ?
-                        <Redirect to={{
-                            pathname: '/',
-                            state: {
-                                type: "success",
-                                mensagem: status.mensagem
-                            }
-                        }} />
-                        : ""}
+                        {status.type === 'error' ?
+                            <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                                {status.mensagem}
+                                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div> : ""}
+                    </div>
 
                     <form onSubmit={addUser} className="form-login">
 
@@ -114,6 +123,10 @@ export const AddUserLogin = () => {
                                 <label className="title-input">Telefone</label>
                                 <input type="text" name="phone" id="phone" className="input-adm" placeholder="Telefone" onChange={valueInput} />
                             </div>
+                            <div className="column">
+                                <label className="title-input">CPF</label>
+                                <input type="text" name="cpf" id="cpf" className="input-adm" placeholder="CPF" onChange={valueInput} />
+                            </div>
                         </div>
                         <div className="row-input">
                             <div className="column">
@@ -122,40 +135,14 @@ export const AddUserLogin = () => {
                             </div>
                             <div className="column">
                                 <label className="title-input">Senha</label>
-                                <input type="password" name="password" id="password" className="input-adm" placeholder="Senha para acessar o sistema" autoComplete="on" onChange={valueInput} />
-                            </div>
-                            <div className="column">
-                                <label className="title-input">Tipo de Conta</label>
-                                <select name="account_type" className="input-select">
-                                    <option value="1" selected>Candidato</option>
-                                    <option value="2">Empresa</option>
-                                </select>
-                            </div>
-                            <div className="column">
-                                <label className="title-input">CPF</label>
-                                <input type="text" name="cpf" id="cpf" className="input-adm" placeholder="CPF" autoComplete="on" onChange={valueInput} />
-                            </div>
-
-                        </div>
-                        <div className="row-input">
-                            <div className="column">
-                                <label className="title-input">Razão Social</label>
-                                <input type="text" name="razao_social" id="razao_social" className="input-adm" placeholder="Razão Social" autoComplete="on" onChange={valueInput} />
-                            </div>
-                            <div className="column">
-                                <label className="title-input">CNPJ</label>
-                                <input type="text" name="cnpj" id="cnpj" className="input-adm" placeholder="CNPJ" autoComplete="on" onChange={valueInput} />
+                                <input type="password" name="password" id="password" className="input-adm" placeholder="Senha para acessar o sistema" onChange={valueInput} />
                             </div>
                         </div>
-                        
-                        <button type="submit" className="btn-success">Cadastrar</button>
-                                                         
-                    <div className="signup-link">
-                        <Link to="/" className="link-pg-login">Acessar</Link>
-                    </div>
-
+                        <div className="signup-link">
+                            <button type="submit" className="btn btn-success">Cadastrar</button>
+                            <button type="submit" className="btn btn-primary ml-2"><Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Voltar</Link></button>
+                        </div>
                     </form>
-
                 </div>
             </div>
         </div>

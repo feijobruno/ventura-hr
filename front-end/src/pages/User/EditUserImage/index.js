@@ -5,7 +5,7 @@ import { Navbar } from '../../../components/Navbar';
 import { Sidebar } from '../../../components/Sidebar';
 
 import api from '../../../config/configApi';
-import { servDeleteUser } from '../../../services/servDeleteUser';
+// import { servDeleteUser } from '../../../services/servDeleteUser';
 
 export const EditUserImage = (props) => {
 
@@ -30,7 +30,7 @@ export const EditUserImage = (props) => {
             }
         }
 
-        await api.put("/user/edit-user-image/" + id, formData, headers)
+        await api.put("/users/edit-image/" + id, formData, headers)
             .then((response) => {
                 setStatus({
                     type: 'redSuccess',
@@ -61,7 +61,7 @@ export const EditUserImage = (props) => {
                 }
             }
 
-            await api.get("/user/user/" + id, headers)
+            await api.get("/users/id/" + id, headers)
                 .then((response) => {
                     if (response.data.user) {
                         setEndImg(response.data.endImage);
@@ -90,27 +90,27 @@ export const EditUserImage = (props) => {
         getUser();
     }, [id]);
 
-    const deleteUser = async (idUser) => {
-        const response = await servDeleteUser(idUser);
-        if (response) {
-            if (response.type === "success") {
-                setStatus({
-                    type: 'redSuccess',
-                    mensagem: response.mensagem
-                });
-            } else {
-                setStatus({
-                    type: "error",
-                    mensagem: response.mensagem
-                });
-            }
-        } else {
-            setStatus({
-                type: 'error',
-                mensagem: 'Erro: Tente mais tarde!'
-            });
-        }
-    }
+    // const deleteUser = async (idUser) => {
+    //     const response = await servDeleteUser(idUser);
+    //     if (response) {
+    //         if (response.type === "success") {
+    //             setStatus({
+    //                 type: 'redSuccess',
+    //                 mensagem: response.mensagem
+    //             });
+    //         } else {
+    //             setStatus({
+    //                 type: "error",
+    //                 mensagem: response.mensagem
+    //             });
+    //         }
+    //     } else {
+    //         setStatus({
+    //             type: 'error',
+    //             mensagem: 'Erro: Tente mais tarde!'
+    //         });
+    //     }
+    // }
 
     return (
         <div>
@@ -129,9 +129,9 @@ export const EditUserImage = (props) => {
                                 <Link to={"/view-user/" + id}>
                                     <button type="button" className="btn-primary">Visualizar</button>
                                 </Link>{" "}
-                                <Link to="#">
+                                {/* <Link to="#">
                                     <button type="button" className="btn-danger" onClick={() => deleteUser(id)}>Apagar</button>
-                                </Link>
+                                </Link> */}
                             </div>
                         </div>
 
