@@ -3,12 +3,6 @@ var cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
-const usersController = require("../../modules/users/controllers/UsersController");
-const loginController = require("../../modules/users/controllers/LoginController");
-const jobsController = require("../../modules/jobs/controllers/JobsController");
-const candidatesController = require("../../modules/candidates/controllers/CandidatesController");
-
-
 const candidatesRouter = require("../../modules/candidates/routes/candidates.routes");
 const dashboardRouter = require("../../modules/jobs/routes/dashboard.routes");
 const homeRouter = require("../../modules/jobs/routes/home.routes");

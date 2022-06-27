@@ -17,27 +17,5 @@ Estrutura de pastas:
 
 `public` - abrangem as áreas das imagens dos usuários do sistema.
 
-
-- A senha deve ser armazenada com criptografia;
+- A senha é armazenada com criptografia;
 - Não pode haver um mesmo email sendo usado por mais de um usuário;
-
-Criando a estrutura de pastas:
-
-```shell
-
-mkdir -p src/modules
-
-mkdir -p src/shared/http
-
-mv src/server.ts src/shared/http/server.ts
-```
-
-Ajustar o arquivo `package.json`:
-
-```json
-{
-  "scripts": {
-    "dev": "ts-node-dev -r dotenv/config ./src/shared/http/server.ts"
-  }
-}
-```
